@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="34" android:compileSdkVersionCodename="14" android:sharedUserId="android.uid.qtiphone" coreApp="true" package="com.qualcomm.qti.telephonyservice" platformBuildVersionCode="34" platformBuildVersionName="14">
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_ROUTING"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <application android:directBootAware="true" android:extractNativeLibs="true" android:persistent="true" android:process="com.qti.phone" android:usesNonSdkApi="true">
+        <uses-library android:name="qti-telephony-hidl-wrapper"/>
+        <receiver android:enabled="true" android:exported="false" android:label="BootReceiver" android:name=".BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name=".QtiTelephonyService"/>
+    </application>
+</manifest>
